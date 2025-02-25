@@ -19,7 +19,7 @@ export class Home extends Phaser.Scene {
     const centerX = this.cameras.main.width / 2;
     const centerY = this.cameras.main.height / 2;
 
-    const bcg = this.add.sprite(centerX, centerY+80, "bcg");
+    const bcg = this.add.sprite(centerX, centerY + 80, "bcg");
     this.player = new Player(this, centerX, 680, "Player");
     this.player.setScale(2);
 

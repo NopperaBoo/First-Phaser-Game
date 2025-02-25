@@ -5,10 +5,12 @@ export class Player extends Entity {
   private moveSpeed: number;
 
   constructor(scene: Phaser.Scene, x: number, y: number, texture: string) {
-    super(scene, x, y, texture, "Player");
+    super(scene, x, y, texture);
     const anims = this.scene.anims;
     this.textureKey = texture;
     this.moveSpeed = 12;
+
+    this.setFrame(1);
 
     anims.create({
       key: "go",
@@ -38,6 +40,7 @@ export class Player extends Entity {
       }),
       frameRate: 7,
       repeat: -1,
+      repeatDelay: 3000,
     });
   }
 
@@ -53,12 +56,12 @@ export class Player extends Entity {
       this.setVelocity(delta * this.moveSpeed, 0);
     } else if (key?.left.isDown && key?.shift.isDown) {
       this.play("run", true);
-      this.setVelocity(-delta * this.moveSpeed*2, 0);
+      this.setVelocity(-delta * this.moveSpeed * 2, 0);
       this.setFlipX(true);
     } else if (key?.right.isDown && key?.shift.isDown) {
       this.play("run", true);
       this.setFlipX(false);
-      this.setVelocity(delta * this.moveSpeed*2, 0);
+      this.setVelocity(delta * this.moveSpeed * 2, 0);
     } else if (
       key?.space.isDown &&
       !key?.left.isDown &&
@@ -69,6 +72,7 @@ export class Player extends Entity {
       this.play("eat", true);
     } else {
       this.stop();
+      this.setFrame(1);
       this.setVelocity(0, 0);
     }
   }

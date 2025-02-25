@@ -5,11 +5,14 @@ import { scenes } from "./scenes";
 new Phaser.Game({
   type: Phaser.AUTO,
   scene: scenes,
+  title: "Phaser Game",
+  pixelArt: true,
+
   physics: {
     default: `arcade`,
-    // arcade: {
-    //   debug: true,
-    // },
+    arcade: {
+      debug: false,
+    },
   },
   scale: {
     mode: Phaser.Scale.FIT,
@@ -17,6 +20,4 @@ new Phaser.Game({
     width: window.innerWidth,
     height: window.innerHeight,
   },
-  title: "Phaser Game",
-  pixelArt: true,
 });
